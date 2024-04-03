@@ -1,0 +1,38 @@
+pipeline
+{
+    agent any
+    {
+        paramaters
+        {
+            string(name: 'pipeline_name', defaultValue: '', description: 'this pipeline is sample')
+            choice(name: 'playbook_name', choices: ['patch', 'Reboot', 'install', description: 'playbook list'])
+        }
+        environment
+        {
+            git_url = 'https://github.com/Vaishnaviqtree/code.git'
+            ansible_dir= "/var/lib/jenkins/workspace/${params.pipeline_name}/ansible/"
+        }
+        stages
+        {
+            stage('enter the pipeline name:')
+            {
+                steps{
+                    echo "the pipeline name is ${params.pipeline_name} "
+                }
+            }
+            stage('enter the choice of playbook')
+            {
+                steps{
+                    echo "the playbook you choosed is ${params.playbook_name} "
+                }
+            }
+            stage('enter the ansible directory')
+            {
+                steps{
+                    echo "the ansible directory is: ${env.ansible_dir} "
+                }
+            }
+            
+        }
+    }
+}
