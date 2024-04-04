@@ -1,11 +1,11 @@
 pipeline
 {
     agent any
-    {
+    
         paramaters
         {
             string(name: 'pipeline_name', defaultValue: '', description: 'this pipeline is sample')
-            choice(name: 'playbook_name', choices: ['patch', 'Reboot', 'install', description: 'playbook list'])
+            choice(name: 'playbook_name', choices: ['patch', 'Reboot', 'install'], description: 'playbook list')
         }
         environment
         {
@@ -34,5 +34,5 @@ pipeline
             }
             
         }
-    }
+    
 }
